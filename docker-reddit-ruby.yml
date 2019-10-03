@@ -1,0 +1,13 @@
+---
+- hosts: aws
+  remote_user: root
+  become: yes
+  tasks:
+    - name: Pull latest image
+      command: docker-compose pull
+      args:
+        chdir: ~/scripts/reddit-ruby
+    - name: Docker Compose
+      command: docker-compose up -d
+      args:
+        chdir: ~/scripts/reddit-ruby
